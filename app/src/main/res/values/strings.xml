@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Hotel Reservation System</string>
+    <string name="welcome_text">Welcome to Hotel Reservation System</string>
+    <string name="guest_name">Guest Name</string>
+    <string name="number_of_guests">Number of Guests</string>
+    <string name="check_in_date">Check in Date</string>
+    <string name="check_out_date">Check out Date</string>
+    <string name="search">Search</string>
+    <string name="date_format">%1$d/%2$d/%3$d</string>
+    <string name="guest_name_error">Guest name is required</string>
+    <string name="n_guests_error">Number of guests is required</string>
+    <string name="check_in_date_null_error">Check-in date is required</string>
+    <string name="check_out_date_null_error">Check-out date is required</string>
+    <string name="check_in_before_today_error">Check-in date must not be in the past</string>
+    <string name="check_out_before_check_in_error">Check-out date must be after check-in date</string>
+    <string name="reservation_info">Guest Name: %1$s\nNumber of Guests: %2$d\nCheck-in Date: %3$s\nCheck-out Date: %4$s</string>
+    <string name="hotel_list">Hotel List</string>
+</resources>
