@@ -3,6 +3,7 @@ package com.example.hotelreservationsystem;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -113,7 +114,6 @@ public class HotelSearchFragment extends Fragment {
             return true;
         });
 
-
         Button searchButton = view.findViewById(R.id.search_button);
         searchButton.setOnClickListener(v -> {
             // validate input fields
@@ -126,13 +126,23 @@ public class HotelSearchFragment extends Fragment {
             Date checkInDate = checkInDateCalendar.getTime();
             Date checkOutDate = checkOutDateCalendar.getTime();
 
+            // save the input fields to shared preferences
+            if (getActivity() != null) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(Constants.GUEST_NAME_KEY, guestName);
+                editor.putInt(Constants.N_GUESTS_KEY, nGuests);
+                editor.putLong(Constants.CHECK_IN_DATE_KEY, checkInDate.getTime());
+                editor.putLong(Constants.CHECK_OUT_DATE_KEY, checkOutDate.getTime());
+                editor.apply();
+            }
+
             // create the hotel list fragment
-            HotelListFragment hotelListFragment = createHotelListFragment(guestName, nGuests, checkInDate, checkOutDate);
+            HotelListFragment hotelListFragment = new HotelListFragment();
 
             // start fragment transaction
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, hotelListFragment);
-            transaction.remove(HotelSearchFragment.this);
             transaction.addToBackStack(HotelSearchFragment.this.getClass().getName());
             transaction.commit();
         });
@@ -190,19 +200,6 @@ public class HotelSearchFragment extends Fragment {
         }
 
         return isValid;
-    }
-
-    private HotelListFragment createHotelListFragment(String guestName, int nGuests, Date checkInDate, Date checkOutDate) {
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.GUEST_NAME_KEY, guestName);
-        bundle.putInt(Constants.N_GUESTS_KEY, nGuests);
-        bundle.putSerializable(Constants.CHECK_IN_DATE_KEY, checkInDate);
-        bundle.putSerializable(Constants.CHECK_OUT_DATE_KEY, checkOutDate);
-
-        HotelListFragment hotelListFragment = new HotelListFragment();
-        hotelListFragment.setArguments(bundle);
-
-        return hotelListFragment;
     }
 
     private void hideKeyboard(View view) {

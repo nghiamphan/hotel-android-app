@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp">
+
+    <TextView
+        android:id="@+id/guest_name_text_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/guest_name_edit_text"
+        android:text="@string/guest_name"
+        app:layout_constraintBottom_toBottomOf="@id/guest_name_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guest_name_edit_text" />
+
+    <EditText
+        android:id="@+id/guest_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:autofillHints="Name of Guest"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guest_name_text_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/guest_age_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/guest_age_edit_text"
+        android:text="@string/guest_age"
+        app:layout_constraintBottom_toBottomOf="@id/guest_age_edit_text"
+        app:layout_constraintEnd_toEndOf="@id/guest_name_text_view"
+        app:layout_constraintStart_toStartOf="@id/guest_name_text_view"
+        app:layout_constraintTop_toTopOf="@id/guest_age_edit_text" />
+
+
+    <EditText
+        android:id="@+id/guest_age_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Age of Guest"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/guest_name_edit_text"
+        app:layout_constraintStart_toStartOf="@id/guest_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/guest_name_edit_text" />
+
+    <TextView
+        android:id="@+id/guest_gender_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/guest_gender"
+        app:layout_constraintBottom_toBottomOf="@id/guest_gender_spinner"
+        app:layout_constraintEnd_toEndOf="@id/guest_name_text_view"
+        app:layout_constraintStart_toStartOf="@id/guest_name_text_view"
+        app:layout_constraintTop_toTopOf="@+id/guest_gender_spinner" />
+
+    <Spinner
+        android:id="@+id/guest_gender_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guest_name_edit_text"
+        app:layout_constraintStart_toStartOf="@id/guest_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/guest_age_edit_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
