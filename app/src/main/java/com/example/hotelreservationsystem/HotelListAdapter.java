@@ -83,7 +83,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
 
             // pass the selected hotel id to the reservation form fragment
             Bundle bundle = new Bundle();
-            bundle.putInt(Constants.SELECTED_HOTEL_KEY, hotel.getId());
+            bundle.putParcelable(Constants.SELECTED_HOTEL_KEY, hotel);
             reservationFormFragment.setArguments(bundle);
 
             // replace the current fragment with the reservation form fragment

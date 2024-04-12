@@ -1,9 +1,12 @@
 package com.example.hotelreservationsystem.dto;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
-public class Hotel {
+public class Hotel implements Parcelable {
 
     private int id;
     private String name;
@@ -20,6 +23,28 @@ public class Hotel {
         this.address = address;
         this.price = price;
         this.availability = availability;
+    }
+
+    protected Hotel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        address = in.readString();
+        price = in.readFloat();
+        availability = in.readByte() != 0;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(address);
+        dest.writeFloat(price);
+        dest.writeByte((byte) (availability ? 1 : 0));
     }
 
     public int getId() {
@@ -73,4 +98,6 @@ public class Hotel {
                 ", availability=" + availability +
                 '}';
     }
+
+
 }

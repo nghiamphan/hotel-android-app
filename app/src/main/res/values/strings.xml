@@ -17,6 +17,7 @@
     <string name="reservation_info">Guest Name: %1$s\nNumber of Guests: %2$d\nCheck-in Date: %3$s\nCheck-out Date: %4$s</string>
     <string name="hotel_list">Hotel List</string>
     <string name="reservation">Reservation</string>
+    <string name="fill_the_information_of_the_guests">Fill the information of the guests</string>
     <string name="guest_age">Age</string>
     <string name="guest_gender">Gender</string>
     <string-array name="gender_array">

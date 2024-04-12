@@ -24,8 +24,31 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:textSize="18sp"
+        android:typeface="monospace"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reservation_form_title_text_view" />
+
+    <include
+        android:id="@+id/hotel_info_text_view"
+        layout="@layout/hotel_list_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/info_text_view"
+        app:layout_constraintStart_toStartOf="@id/info_text_view"
+        app:layout_constraintTop_toBottomOf="@id/info_text_view" />
+
+    <TextView
+        android:id="@+id/guest_list_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/fill_the_information_of_the_guests"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/info_text_view"
+        app:layout_constraintStart_toStartOf="@id/info_text_view"
+        app:layout_constraintTop_toBottomOf="@id/hotel_info_text_view" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/guest_list_recycler_view"
@@ -34,7 +57,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@id/info_text_view"
         app:layout_constraintStart_toStartOf="@+id/info_text_view"
-        app:layout_constraintTop_toBottomOf="@+id/info_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/guest_list_title_text_view" />
 
     <Button
         android:id="@+id/submit_button"

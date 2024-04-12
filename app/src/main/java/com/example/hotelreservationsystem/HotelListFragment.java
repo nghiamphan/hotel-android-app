@@ -2,7 +2,6 @@ package com.example.hotelreservationsystem;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,7 +67,6 @@ public class HotelListFragment extends Fragment {
 
         String reservationInfo = getInfoText(getActivity());
         TextView infoTextView = view.findViewById(R.id.info_text_view);
-        infoTextView.setTypeface(Typeface.MONOSPACE);
         infoTextView.setText(reservationInfo);
 
         RecyclerView hotelListRecyclerView = view.findViewById(R.id.hotel_list_recycler_view);
@@ -82,7 +80,7 @@ public class HotelListFragment extends Fragment {
                     Log.e("HotelListFragment", "onResponse: " + response.message());
                     return;
                 }
-                
+
                 List<Hotel> hotels = response.body();
                 HotelListAdapter hotelListAdapter = new HotelListAdapter(HotelListFragment.this, hotels);
                 hotelListRecyclerView.setAdapter(hotelListAdapter);

@@ -6,6 +6,6 @@ public class Constants {
     public static final String N_GUESTS_KEY = "number of guests";
     public static final String CHECK_IN_DATE_KEY = "check in date";
     public static final String CHECK_OUT_DATE_KEY = "check out date";
-    public static final String SELECTED_HOTEL_KEY = "selected hotel id";
+    public static final String SELECTED_HOTEL_KEY = "selected hotel object";
     public static final String RESERVATION_ID_KEY = "reservation id";
 }

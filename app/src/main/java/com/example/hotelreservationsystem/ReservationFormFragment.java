@@ -1,7 +1,6 @@
 package com.example.hotelreservationsystem;
 
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hotelreservationsystem.dto.Guest;
+import com.example.hotelreservationsystem.dto.Hotel;
 import com.example.hotelreservationsystem.dto.Reservation;
 import com.example.hotelreservationsystem.service.HotelService;
 import com.example.hotelreservationsystem.service.HotelServiceInterface;
@@ -47,8 +47,8 @@ public class ReservationFormFragment extends Fragment {
             return;
         }
 
-        int hotelId = getArguments().getInt(Constants.SELECTED_HOTEL_KEY, 0);
 
+        // get and display number of guests, check-in and check-out dates
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, 0);
         int nGuests = sharedPreferences.getInt(Constants.N_GUESTS_KEY, 0);
         Date checkInDate = new Date(sharedPreferences.getLong(Constants.CHECK_IN_DATE_KEY, 0));
@@ -56,8 +56,21 @@ public class ReservationFormFragment extends Fragment {
 
         String reservationInfo = HotelListFragment.getInfoText(getActivity());
         TextView infoTextView = view.findViewById(R.id.info_text_view);
-        infoTextView.setTypeface(Typeface.MONOSPACE);
         infoTextView.setText(reservationInfo);
+
+        // get and display the chosen hotel information
+        Hotel hotel = getArguments().getParcelable(Constants.SELECTED_HOTEL_KEY);
+        if (hotel == null) {
+            return;
+        }
+
+        TextView hotelNameTextView = view.findViewById(R.id.hotel_name_text_view);
+        hotelNameTextView.setText(hotel.getName());
+        TextView hotelAddressTextView = view.findViewById(R.id.hotel_address_text_view);
+        hotelAddressTextView.setText(hotel.getAddress());
+        TextView hotelPriceTextView = view.findViewById(R.id.hotel_price_text_view);
+        hotelPriceTextView.setText(String.format(Locale.getDefault(), "$%.2f", hotel.getPrice()));
+
 
         List<Guest> guests = new ArrayList<>();
         for (int i = 0; i < nGuests; i++) {
@@ -78,7 +91,7 @@ public class ReservationFormFragment extends Fragment {
 
             // create reservation
             Reservation reservation = new Reservation();
-            reservation.setHotel(hotelId);
+            reservation.setHotel(hotel.getId());
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             reservation.setCheck_in(sdf.format(checkInDate));
