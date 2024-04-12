@@ -53,6 +53,8 @@ public class HotelSearchFragment extends Fragment {
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    checkInDateEditText.setError(null);
+                    
                     final Calendar calendar = Calendar.getInstance();
                     int defaultYear = calendar.get(Calendar.YEAR);
                     int defaultMonth = calendar.get(Calendar.MONTH);
@@ -86,6 +88,8 @@ public class HotelSearchFragment extends Fragment {
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    checkOutDateEditText.setError(null);
+
                     final Calendar calendar = Calendar.getInstance();
                     int defaultYear = calendar.get(Calendar.YEAR);
                     int defaultMonth = calendar.get(Calendar.MONTH);

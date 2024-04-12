@@ -98,15 +98,12 @@ public class ReservationFormFragment extends Fragment {
 
                     Map<String, Integer> body = response.body();
 
-                    int reservationId = 0;
+                    Integer reservationId = 0;
                     if (body != null && body.containsKey("confirmation_number")) {
-                        Integer reservationInteger = body.get("confirmation_number");
-                        if (reservationInteger != null) {
-                            reservationId = reservationInteger;
-                        }
+                        reservationId = body.get("confirmation_number");
                     }
 
-                    if (reservationId == 0) {
+                    if (reservationId == null || reservationId == 0) {
                         Log.e("ReservationFormFragment", "onResponse: error getting reservation id from response: " + response.message());
                         return;
                     }
